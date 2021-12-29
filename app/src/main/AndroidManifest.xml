@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.L2011Jetpack">
         <activity
+            android:name=".SampleActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
