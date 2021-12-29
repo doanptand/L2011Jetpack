@@ -1,10 +1,14 @@
 package com.ddona.l2011jetpack.vm
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MusicViewModel : ViewModel() {
+class MusicViewModel(
+    val app: Application,
+    var tempNumber: Int
+) : ViewModel() {
     private val _number = MutableLiveData<Int>()
     val number: LiveData<Int>
         get() = _number

@@ -11,13 +11,17 @@ import androidx.lifecycle.ViewModelProvider
 import com.ddona.l2011jetpack.databinding.FragmentAlbumBinding
 import com.ddona.l2011jetpack.databinding.FragmentSongBinding
 import com.ddona.l2011jetpack.vm.MusicViewModel
+import com.ddona.l2011jetpack.vm.MusicViewModelFactory
 
 class AlbumFragment : Fragment() {
     private lateinit var binding: FragmentAlbumBinding
 
     //    private lateinit var viewModel: MusicViewModel
 //    private val viewModel: MusicViewModel by viewModels()
-    private val viewModel: MusicViewModel by activityViewModels()
+    private val viewModel: MusicViewModel by activityViewModels(){
+        MusicViewModelFactory(requireActivity().application, 10)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

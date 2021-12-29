@@ -11,13 +11,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.ddona.l2011jetpack.databinding.FragmentSongBinding
 import com.ddona.l2011jetpack.vm.MusicViewModel
+import com.ddona.l2011jetpack.vm.MusicViewModelFactory
 
 class SongFragment : Fragment() {
     private lateinit var binding: FragmentSongBinding
 
-    //    private lateinit var viewModel: MusicViewModel
+    private lateinit var viewModel: MusicViewModel
 //    private val viewModel by viewModels<MusicViewModel>()
-    private val viewModel by activityViewModels<MusicViewModel>()
+//    private val viewModel by activityViewModels<MusicViewModel>() {
+//        MusicViewModelFactory(requireActivity().application, 10)
+//    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,7 +29,11 @@ class SongFragment : Fragment() {
     ): View {
         binding = FragmentSongBinding.inflate(layoutInflater)
 //        viewModel = ViewModelProvider(this).get(MusicViewModel::class.java)
-//        viewModel = ViewModelProvider(requireActivity()).get(MusicViewModel::class.java)
+        viewModel =
+            ViewModelProvider(
+                requireActivity(),
+                MusicViewModelFactory(requireActivity().application, 10)
+            ).get(MusicViewModel::class.java)
         viewModel.number.observe(viewLifecycleOwner, {
             binding.tvNumber.text = it.toString()
         })
