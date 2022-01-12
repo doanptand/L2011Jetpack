@@ -41,19 +41,22 @@ class SongFragment : Fragment() {
                 requireActivity(),
                 MusicViewModelFactory(requireActivity().application, 10)
             ).get(MusicViewModel::class.java)
-        viewModel.number.observe(viewLifecycleOwner, {
-            binding.tvNumber.text = it.toString()
-        })
+        binding.vm = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
+//        viewModel.number.observe(viewLifecycleOwner, {
+//            binding.tvNumber.text = it.toString()
+//        })
         //To Avoid memory leak when use observeForever, please call removeObserver
-        viewModel.number.observeForever {
-            Log.d("doanpt", "number in fragment: $it")
-        }
-        binding.btnUp.setOnClickListener {
-//            viewModel.increaseNumber()
-//            viewModel.showToast()
-//            viewModel.startActivity()
-            viewModel.showToastChannel()
-        }
+//        viewModel.number.observeForever {
+//            Log.d("doanpt", "number in fragment: $it")
+//        }
+//        binding.btnUp.setOnClickListener {
+////            viewModel.increaseNumber()
+////            viewModel.showToast()
+////            viewModel.startActivity()
+//            viewModel.showToastChannel()
+//        }
         viewModel.needToast.observe(viewLifecycleOwner, {
             if (it) {
                 Toast.makeText(requireContext(), "New toast", Toast.LENGTH_SHORT).show()
