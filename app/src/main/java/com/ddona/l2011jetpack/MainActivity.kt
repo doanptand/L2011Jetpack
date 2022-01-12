@@ -3,10 +3,12 @@ package com.ddona.l2011jetpack
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.ddona.l2011jetpack.base.BaseActivity
 import com.ddona.l2011jetpack.databinding.ActivityMainBinding
+import com.ddona.l2011jetpack.monitor.ActivityMonitor
 import com.ddona.l2011jetpack.vm.MainViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
 

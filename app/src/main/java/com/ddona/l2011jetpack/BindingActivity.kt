@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
+import com.ddona.l2011jetpack.base.BaseActivity
 import com.ddona.l2011jetpack.databinding.ActivityBindingBinding
 import com.ddona.l2011jetpack.vm.BindingViewModel
 
-class BindingActivity : AppCompatActivity() {
+class BindingActivity : BaseActivity() {
 
     private lateinit var binding: ActivityBindingBinding
     private val viewModel: BindingViewModel by viewModels()

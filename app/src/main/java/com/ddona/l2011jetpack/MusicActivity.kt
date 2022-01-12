@@ -6,12 +6,13 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import com.ddona.l2011jetpack.adapter.MusicPagerAdapter
+import com.ddona.l2011jetpack.base.BaseActivity
 import com.ddona.l2011jetpack.databinding.ActivityMusicBinding
 import com.ddona.l2011jetpack.vm.MusicViewModel
 import com.ddona.l2011jetpack.vm.MusicViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MusicActivity : AppCompatActivity() {
+class MusicActivity : BaseActivity() {
     private lateinit var binding: ActivityMusicBinding
 //    private val viewModel by viewModels<MusicViewModel>() {
 //        MusicViewModelFactory(application, 1)
