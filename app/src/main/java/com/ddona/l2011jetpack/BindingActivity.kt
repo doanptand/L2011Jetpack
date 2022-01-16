@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.ddona.l2011jetpack.adapter.StudentAdapter
 import com.ddona.l2011jetpack.base.BaseActivity
 import com.ddona.l2011jetpack.databinding.ActivityBindingBinding
+import com.ddona.l2011jetpack.model.Student
 import com.ddona.l2011jetpack.vm.BindingViewModel
 
 class BindingActivity : BaseActivity() {
@@ -29,5 +32,15 @@ class BindingActivity : BaseActivity() {
 //        viewModel.link.observe(this, {
 //            Log.d("doanpt", it)
 //        })
+        val students = arrayListOf(
+            Student(1, "Doan", "ND"),
+            Student(2, "Doan2", "ND"),
+            Student(3, "Doan3", "ND"),
+            Student(4, "Doan4", "ND"),
+        )
+        val adapter = StudentAdapter(students)
+        binding.rvData.adapter = adapter
+        binding.rvData.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 }
