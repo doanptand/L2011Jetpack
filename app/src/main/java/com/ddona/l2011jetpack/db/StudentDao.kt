@@ -8,17 +8,23 @@ import com.ddona.l2011jetpack.model.Student
 interface StudentDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun insertStudent(student: Student)
+    suspend fun insertStudent(student: Student)
 
     @Update
-    fun updateStudent(student: Student)
+    suspend fun updateStudent(student: Student)
 
     @Delete
-    fun deleteStudent(student: Student)
+    suspend fun deleteStudent(student: Student)
+
+    @Query("DELETE FROM student WHERE _id = :id")
+    suspend fun deleteStudentById(id: Int)
 
     @Query("SELECT * FROM student")
-    fun getAllStudents(): List<Student>
+    suspend fun getAllStudents(): List<Student>
 
     @Query("SELECT * FROM student")
     fun getAllStudentsWithLiveData(): LiveData<List<Student>>
+
+    @Query("SELECT * FROM student WHERE _id = :id")
+    suspend fun getStudentById(id: Int): Student
 }

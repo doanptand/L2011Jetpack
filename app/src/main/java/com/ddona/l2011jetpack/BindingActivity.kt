@@ -38,7 +38,8 @@ class BindingActivity : BaseActivity() {
             Student(3, "Doan3", "ND"),
             Student(4, "Doan4", "ND"),
         )
-        val adapter = StudentAdapter(students)
+        val adapter = StudentAdapter()
+        adapter.submitList(students)
         binding.rvData.adapter = adapter
         binding.rvData.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

@@ -6,9 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ddona.l2011jetpack.databinding.ItemStudentBinding
 import com.ddona.l2011jetpack.model.Student
 
-class StudentAdapter(
-    private val students: List<Student>
-) : RecyclerView.Adapter<StudentAdapter.ViewHolder>() {
+class StudentAdapter : RecyclerView.Adapter<StudentAdapter.ViewHolder>() {
+    private val students = arrayListOf<Student>()
+
+    fun submitList(temp: List<Student>) {
+        students.clear()
+        students.addAll(temp)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
