@@ -2,6 +2,7 @@ package com.ddona.l2011jetpack.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.ddona.l2011jetpack.model.SchoolAndDirector
 import com.ddona.l2011jetpack.model.Student
 
 @Dao
@@ -27,4 +28,7 @@ interface StudentDao {
 
     @Query("SELECT * FROM student WHERE _id = :id")
     suspend fun getStudentById(id: Int): Student
+
+    @Query("SELECT * FROM school WHERE schoolName = :name")
+    suspend fun getSchoolAndDirector(name: String): List<SchoolAndDirector>
 }
