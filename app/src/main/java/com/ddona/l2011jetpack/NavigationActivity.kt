@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -14,6 +15,9 @@ import com.ddona.l2011jetpack.databinding.ActivityNavigationBinding
 class NavigationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNavigationBinding
     private lateinit var navController: NavController
+
+    private lateinit var appBarConfig: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNavigationBinding.inflate(layoutInflater)
@@ -23,8 +27,12 @@ class NavigationActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHost.navController
 
+        appBarConfig = AppBarConfiguration(
+            setOf(R.id.homeFragment, R.id.searchFragment)
+        )
+
         setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navController)
+        setupActionBarWithNavController(navController, appBarConfig)
 
         binding.bnvMain.setupWithNavController(navController)
 
