@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.ddona.l2011jetpack.databinding.ActivityNavigationBinding
 
 class NavigationActivity : AppCompatActivity() {
@@ -24,6 +25,8 @@ class NavigationActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController)
+
+        binding.bnvMain.setupWithNavController(navController)
 
     }
 
