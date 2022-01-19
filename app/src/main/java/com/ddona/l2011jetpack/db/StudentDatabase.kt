@@ -39,14 +39,14 @@ abstract class StudentDatabase : RoomDatabase() {
 
                         private suspend fun insertFakeData() {
                             val studentDao = INSTANCE!!.getStudentDao()
-                            for (i in 1..100) {
-                                studentDao.insertStudent(
-                                    Student(
-                                        name = "Doan $i",
-                                        address = "Nam Dinh $i"
-                                    )
-                                )
-                            }
+//                            for (i in 1..100) {
+//                                studentDao.insertStudent(
+////                                    Student(
+////                                        name = "Doan $i",
+////                                        address = "Nam Dinh $i"
+////                                    )
+//                                )
+//                            }
                         }
 
                         override fun onOpen(db: SupportSQLiteDatabase) {

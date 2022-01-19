@@ -30,9 +30,9 @@ interface StudentDao {
     @Query("SELECT * FROM student WHERE _id = :id")
     suspend fun getStudentById(id: Int): Student
 
-    @Query("SELECT * FROM school WHERE schoolName = :name")
-    suspend fun getSchoolAndDirector(name: String): List<SchoolAndDirector>
-
-    @Query("SELECT * FROM school where schoolName= :name")
-    suspend fun getSchoolAndStudents(name: String): List<SchoolAndStudents>
+//    @Query("SELECT * FROM school WHERE schoolName = :name")
+//    suspend fun getSchoolAndDirector(name: String): List<SchoolAndDirector>
+//
+//    @Query("SELECT * FROM school where schoolName= :name")
+//    suspend fun getSchoolAndStudents(name: String): List<SchoolAndStudents>
 }

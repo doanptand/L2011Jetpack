@@ -13,5 +13,5 @@ data class Student(
     val name: String,
     @ColumnInfo(name = "_address")
     val address: String,
-    val schoolName: String
+    val schoolName: String = ""
 )
