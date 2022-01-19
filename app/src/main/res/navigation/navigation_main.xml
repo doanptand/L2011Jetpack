@@ -10,12 +10,16 @@
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/anim_bottom_up"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.ddona.l2011jetpack.ui.fragments.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
@@ -23,7 +27,7 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.ddona.l2011jetpack.ui.fragments.WelcomeFragment"
-        android:label="WelcomeFragment" >
+        android:label="WelcomeFragment">
         <argument
             android:name="username"
             app:argType="string" />
