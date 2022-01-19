@@ -35,4 +35,15 @@
             android:name="password"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ddona.l2011jetpack.ui.fragments.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.ddona.l2011jetpack.ui.fragments.TermsFragment"
+        android:label="TermsFragment" />
+    <action
+        android:id="@+id/action_global_termsFragment"
+        app:destination="@id/termsFragment" />
 </navigation>
