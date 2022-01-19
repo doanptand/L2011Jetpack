@@ -6,10 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.ddona.l2011jetpack.databinding.ActivityNavigationBinding
 
 class NavigationActivity : AppCompatActivity() {
@@ -28,7 +25,8 @@ class NavigationActivity : AppCompatActivity() {
         navController = navHost.navController
 
         appBarConfig = AppBarConfiguration(
-            setOf(R.id.homeFragment, R.id.searchFragment)
+            setOf(R.id.homeFragment, R.id.searchFragment),
+            binding.drawer
         )
 
         setSupportActionBar(binding.toolbar)
@@ -36,10 +34,11 @@ class NavigationActivity : AppCompatActivity() {
 
         binding.bnvMain.setupWithNavController(navController)
 
+        binding.navMain.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
