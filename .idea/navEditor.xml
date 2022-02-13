@@ -50,18 +50,23 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="deepLink">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="searchFragment2">
+                  <entry key="searchFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-754" />
-                            <option name="y" value="-566" />
+                            <option name="x" value="-719" />
+                            <option name="y" value="380" />
                           </Point>
                         </option>
                       </LayoutPositions>

@@ -12,13 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.L2011Jetpack">
         <activity
-            android:name=".NavigationActivity"
+            android:name="com.ddona.l2011jetpack.WorkActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".NavigationActivity"
+            android:exported="true">
+
             <nav-graph android:value="@navigation/navigation_main" />
         </activity>
         <activity
