@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit
 
 class WorkViewModel(private val app: Application) : AndroidViewModel(app) {
     private val workManager = WorkManager.getInstance(app.applicationContext)
+    val sampleWorkInfo = workManager.getWorkInfosByTagLiveData("download_link")
 
     fun downloadContent() {
         val workConstraints = Constraints.Builder()
@@ -47,7 +48,12 @@ class WorkViewModel(private val app: Application) : AndroidViewModel(app) {
         data.putString("link", link)
         data.putAll(workData)
         downloadRequest.setInputData(data.build())
-
-        workManager.enqueue(downloadRequest.build())
+        downloadRequest.addTag("download_link")
+        val request = downloadRequest.build()
+        workManager.enqueueUniqueWork(
+            "download_with_link",
+            ExistingWorkPolicy.REPLACE,
+            request
+        )
     }
 }

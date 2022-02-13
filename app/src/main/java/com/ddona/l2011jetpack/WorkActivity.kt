@@ -2,7 +2,9 @@ package com.ddona.l2011jetpack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.work.WorkInfo
 import com.ddona.l2011jetpack.databinding.ActivityWorkBinding
 import com.ddona.l2011jetpack.vm.WorkViewModel
 
@@ -27,5 +29,11 @@ class WorkActivity : AppCompatActivity() {
             val link = binding.edtLink.text.toString()
             viewModel.downloadLink(link)
         }
+        viewModel.sampleWorkInfo.observe(this, { it ->
+            it.filter { it.state == WorkInfo.State.SUCCEEDED }
+                .map {
+                    Log.d("doanpt", "Result is: ${it.outputData.getBoolean("is_success", false)}")
+                }
+        })
     }
 }
