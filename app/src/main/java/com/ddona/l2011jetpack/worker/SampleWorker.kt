@@ -8,15 +8,16 @@ import java.lang.Exception
 
 class SampleWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
     override fun doWork(): Result {
+        val link = inputData.getString("link")
         return try {
-            downloadFileFromNetwork("http://doanpt.com")
+            downloadFileFromNetwork(link!!)
             Result.success()
         } catch (e: Exception) {
             Result.failure()
         }
     }
 
-    fun downloadFileFromNetwork(link: String) {
+    private fun downloadFileFromNetwork(link: String) {
         Log.d("doanpt", "Downloading content from $link")
     }
 }

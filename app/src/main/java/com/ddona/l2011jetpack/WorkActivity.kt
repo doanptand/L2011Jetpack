@@ -22,5 +22,10 @@ class WorkActivity : AppCompatActivity() {
         binding.btnDownloadLoop.setOnClickListener {
             viewModel.downloadContentLoop()
         }
+
+        binding.btnDownloadLink.setOnClickListener {
+            val link = binding.edtLink.text.toString()
+            viewModel.downloadLink(link)
+        }
     }
 }

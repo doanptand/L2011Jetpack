@@ -30,4 +30,24 @@ class WorkViewModel(private val app: Application) : AndroidViewModel(app) {
             downloadRequests.build()
         )
     }
+
+    fun downloadLink(link: String) {
+        val downloadRequest = OneTimeWorkRequestBuilder<SampleWorker>()
+
+        val constraint = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresCharging(true)
+        downloadRequest.setConstraints(constraint.build())
+
+        val workData = workDataOf(
+            "sample" to "Doanpt1",
+            "number" to 1000
+        )
+        val data = Data.Builder()
+        data.putString("link", link)
+        data.putAll(workData)
+        downloadRequest.setInputData(data.build())
+
+        workManager.enqueue(downloadRequest.build())
+    }
 }
