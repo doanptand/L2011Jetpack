@@ -18,5 +18,9 @@ class WorkActivity : AppCompatActivity() {
         binding.btnDownload.setOnClickListener {
             viewModel.downloadContent()
         }
+
+        binding.btnDownloadLoop.setOnClickListener {
+            viewModel.downloadContentLoop()
+        }
     }
 }
