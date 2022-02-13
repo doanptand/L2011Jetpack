@@ -1,5 +1,6 @@
 package com.ddona.l2011jetpack.vm
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.work.*
@@ -67,6 +68,28 @@ class WorkViewModel(private val app: Application) : AndroidViewModel(app) {
             .beginWith(listOf(workA1, workA2, workA3))
             .then(workB)
             .then(workC).enqueue()
+    }
+
+    @SuppressLint("EnqueueWork")
+    fun runWorkContinuation() {
+        val workA1 = OneTimeWorkRequest.from(WorkerA1::class.java)
+        val workA2 = OneTimeWorkRequest.from(WorkerA2::class.java)
+        val workA3 = OneTimeWorkRequest.from(WorkerA3::class.java)
+        val workB = OneTimeWorkRequest.from(WorkerB::class.java)
+
+        val workC = OneTimeWorkRequest.from(WorkerC::class.java)
+
+        val chain1 = workManager
+            .beginWith(workA1)
+            .then(workA2) //15s
+        val chain2 = workManager
+            .beginWith(workA3)
+            .then(workB)//8s
+
+        val chain3 = WorkContinuation
+            .combine(listOf(chain1, chain2))
+            .then(workC)
+            .enqueue()
     }
 
 
