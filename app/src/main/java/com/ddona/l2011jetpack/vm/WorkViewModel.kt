@@ -3,7 +3,7 @@ package com.ddona.l2011jetpack.vm
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.work.*
-import com.ddona.l2011jetpack.worker.SampleWorker
+import com.ddona.l2011jetpack.worker.*
 import java.util.concurrent.TimeUnit
 
 class WorkViewModel(private val app: Application) : AndroidViewModel(app) {
@@ -56,4 +56,18 @@ class WorkViewModel(private val app: Application) : AndroidViewModel(app) {
             request
         )
     }
+
+    fun runChain() {
+        val workA1 = OneTimeWorkRequest.from(WorkerA1::class.java)
+        val workA2 = OneTimeWorkRequest.from(WorkerA2::class.java)
+        val workA3 = OneTimeWorkRequest.from(WorkerA3::class.java)
+        val workB = OneTimeWorkRequest.from(WorkerB::class.java)
+        val workC = OneTimeWorkRequest.from(WorkerC::class.java)
+        workManager
+            .beginWith(listOf(workA1, workA2, workA3))
+            .then(workB)
+            .then(workC).enqueue()
+    }
+
+
 }

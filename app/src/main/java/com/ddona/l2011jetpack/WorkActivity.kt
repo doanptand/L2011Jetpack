@@ -22,7 +22,8 @@ class WorkActivity : AppCompatActivity() {
         }
 
         binding.btnDownloadLoop.setOnClickListener {
-            viewModel.downloadContentLoop()
+//            viewModel.downloadContentLoop()
+            viewModel.runChain()
         }
 
         binding.btnDownloadLink.setOnClickListener {
