@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ddona.l2011jetpack.adapter.PassengerAdapter
+import com.ddona.l2011jetpack.adapter.PassengerLoadStateAdapter
 import com.ddona.l2011jetpack.databinding.ActivityPassengerBinding
 import com.ddona.l2011jetpack.vm.PassengerViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -25,7 +26,10 @@ class PassengerActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         val adapter = PassengerAdapter()
-        binding.rvPassenger.adapter = adapter
+        binding.rvPassenger.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = PassengerLoadStateAdapter { adapter.refresh() },
+            footer = PassengerLoadStateAdapter { adapter.retry() }
+        )
         lifecycleScope.launchWhenStarted {
             viewModels.passengers.collectLatest {
                 adapter.submitData(it)

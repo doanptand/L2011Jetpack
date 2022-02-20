@@ -3,6 +3,7 @@ package com.ddona.l2011jetpack.extension
 import android.annotation.SuppressLint
 import android.os.Build
 import android.text.Html
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -34,5 +35,10 @@ fun setHtmlText(tv: TextView, content: String) {
 @BindingAdapter("name_trip")
 fun setNameTrip(tv: TextView, passenger: Passenger) {
     tv.text = "${passenger.name}, ${passenger.trips} Trips"
+}
+
+
+fun View.visible(isShow: Boolean) {;
+    visibility = if (isShow) View.VISIBLE else View.GONE
 }
 
