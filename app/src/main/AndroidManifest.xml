@@ -13,8 +13,7 @@
         android:theme="@style/Theme.L2011Jetpack">
         <activity
             android:name="com.ddona.l2011jetpack.WorkActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".NavigationActivity"
             android:exported="true">
@@ -39,6 +38,10 @@
             android:exported="true" />
         <activity
             android:name=".PagingActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name="com.ddona.l2011jetpack.PassengerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
